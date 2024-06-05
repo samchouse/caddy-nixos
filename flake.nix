@@ -23,13 +23,12 @@
     packages = forAllSystems (system: let
       pkgs = nixpkgsFor.${system};
     in {
-      caddy = pkgs.buildGo120Module {
+      caddy = pkgs.buildGoModule {
         pname = "caddy";
         inherit version;
         src = ./caddy-src;
         runVend = true;
-        vendorSha256 = "sha256-fgr64f1wOreFrMTAMnYTkaqAfrcG0tme4J3YVawoks0=";
-        # vendorSha256 = pkgs.lib.fakeSha256;
+        vendorHash = "sha256-fgr64f1wOreFrMTAMnYTkaqAfrcG0tme4J3YVawoks0=";
       };
     });
 

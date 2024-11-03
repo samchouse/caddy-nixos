@@ -1,7 +1,7 @@
 {
-  description = "Caddy with Cloudflare plugin";
+  description = "Caddy with some plugins";
 
-  inputs.nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/*.tar.gz";
+  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
   outputs =
     {
@@ -29,13 +29,12 @@
           pkgs = nixpkgsFor.${system};
         in
         {
-          caddy = pkgs.buildGo123Module {
+          caddy = pkgs.buildGoModule {
             pname = "caddy";
             inherit version;
             src = ./caddy-src;
             runVend = true;
-            vendorHash = "sha256-fgr64f1wOreFrMTAMnYTkaqAfrcG0tme4J3YVawoks0=";
-            # vendorSha256 = pkgs.lib.fakeSha256;
+            vendorHash = "sha256-dEuxEG6mW2V7iuSXvziR82bmF+Hwe6ePCfdNj5t3t4c=";
           };
         }
       );
